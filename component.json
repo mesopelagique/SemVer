@@ -1,0 +1,16 @@
+{
+  "author" : "mesopelagique",
+  "devDependencies" : [
+    "mesopelagique\/expect"
+  ],
+  "description" : "The semantic versioner for 4D",
+  "keywords" : [
+    "semver",
+    "4d-component"
+  ],
+  "name" : "SemVer",
+  "repository" : {
+    "type" : "git",
+    "url" : "https:\/\/mesopelagique@github.com\/mesopelagique\/SemVer"
+  }
+}

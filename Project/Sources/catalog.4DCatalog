@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="SemVer" uuid="4EBA510C5B7040D3A2E25852A458B0D2" collation_locale="en-gb">
+	<schema name="DEFAULT_SCHEMA"/>
+	<base_extra __stringCompHash="icu:63.1.0" __keywordBuildingHash="icu:63.1.0">
+		<journal_file journal_file_enabled="true"/>
+	</base_extra>
+</base>
