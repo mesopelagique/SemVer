@@ -1,12 +1,12 @@
 //%attributes = {}
 
-C_OBJECT:C1216($version)
+C_OBJECT:C1216(_;$version;$semver)
 
-_:=spec 
+_:=spec ()
 $semver:=semver 
 While (_.describe("Version created without args"))
 	
-	While (_.it(" must be 0 version))"
+	While (_.it(" must be 0 version"))
 		$version:=$semver.version()
 		_.expect($version.major).to(_.beEqualTo(0))
 		_.expect($version.minor).to(_.beEqualTo(0))
@@ -66,7 +66,7 @@ While (_.describe("Version created by collection"))
 	While (_.describe("but empty"))
 		$version:=$semver.version(New collection:C1472())
 		
-		While (_.it(" must be 0 version))"
+		While (_.it(" must be 0 version"))
 			_.expect($version.major).to(_.beEqualTo(0))
 			_.expect($version.minor).to(_.beEqualTo(0))
 			_.expect($version.patch).to(_.beEqualTo(0))
@@ -76,7 +76,7 @@ While (_.describe("Version created by collection"))
 	While (_.describe("with incorrect type"))
 		$version:=$semver.version(New collection:C1472("aa"))
 		
-		While (_.it(" must be 0 version))"
+		While (_.it(" must be 0 version"))
 			_.expect($version.major).to(_.beEqualTo(0))
 			_.expect($version.minor).to(_.beEqualTo(0))
 			_.expect($version.patch).to(_.beEqualTo(0))
