@@ -37,6 +37,7 @@ Class constructor
 							This:C1470.major:=0
 							This:C1470.minor:=0
 							This:C1470.patch:=0
+							This:C1470.valid:=False:C215
 					End case 
 					
 				: (Value type:C1509($1)=Is collection:K8:32)
@@ -57,6 +58,7 @@ Class constructor
 							This:C1470.major:=0
 							This:C1470.minor:=0
 							This:C1470.patch:=0
+							This:C1470.valid:=False:C215
 					End case 
 				: (Value type:C1509($1)=Is object:K8:27)
 					This:C1470.major:=$1.major
@@ -79,4 +81,84 @@ Class constructor
 			This:C1470.major:=0
 			This:C1470.minor:=0
 			This:C1470.patch:=0
+			This:C1470.valid:=False:C215
 	End case 
+	
+Function compareTo
+	C_VARIANT:C1683($1)
+	C_LONGINT:C283($0)
+	C_OBJECT:C1216($that)
+	$that:=cs:C1710.Version.new($1)
+	
+	Case of 
+		: (This:C1470.major>$that.major)
+			$0:=1
+		: (This:C1470.major<$that.major)
+			$0:=-1
+		Else   // major equal
+			Case of 
+				: (This:C1470.minor>$that.minor)
+					$0:=1
+				: (This:C1470.minor<$that.minor)
+					$0:=-1
+				Else   // minor equal
+					Case of 
+						: (This:C1470.patch>$that.patch)
+							$0:=1
+						: (This:C1470.patch<$that.patch)
+							$0:=-1
+						Else   // patch equal
+							$0:=0
+					End case 
+			End case 
+	End case 
+	
+Function gt
+	C_VARIANT:C1683($1)
+	C_BOOLEAN:C305($0)
+	$0:=This:C1470.compareTo($1)>0
+	
+Function gte
+	C_VARIANT:C1683($1)
+	C_BOOLEAN:C305($0)
+	$0:=This:C1470.compareTo($1)>=0
+	
+Function lt
+	C_VARIANT:C1683($1)
+	C_BOOLEAN:C305($0)
+	$0:=This:C1470.compareTo($1)<0
+	
+Function lte
+	C_VARIANT:C1683($1)
+	C_BOOLEAN:C305($0)
+	$0:=This:C1470.compareTo($1)<=0
+	
+Function eq
+	C_VARIANT:C1683($1)
+	C_BOOLEAN:C305($0)
+	$0:=This:C1470.equalTo($1)
+	
+Function neq
+	C_VARIANT:C1683($1)
+	C_BOOLEAN:C305($0)
+	$0:=Not:C34(This:C1470.eq($1))
+	
+Function equalTo
+	C_VARIANT:C1683($1)
+	C_BOOLEAN:C305($0)
+	C_OBJECT:C1216($that)
+	$that:=cs:C1710.Version.new($1)
+	
+	If (This:C1470.major#$that.major)
+		$0:=False:C215
+	Else   // major equal
+		If (This:C1470.minor#$that.minor)
+			$0:=False:C215
+		Else   // minor equal
+			If (This:C1470.patch#$that.patch)
+				$0:=False:C215
+			Else   // patch equal
+				$0:=True:C214
+			End if 
+		End if 
+	End if 
