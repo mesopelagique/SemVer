@@ -35,6 +35,18 @@ $version.minor
 $version.patch
 ```
 
+### Extract digits
+
+You can extract specific digit without creating `Version` object
+
+```4d
+semver .major("1.2.3") // 1
+semver .minor("1.2.3") // 2
+semver .patch("1.2.3") // 3
+```
+
+> But if you need to extract all the digits, prefer use `Version` object
+
 ## TODO
 
 - [ ] compare two versions
