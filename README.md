@@ -47,6 +47,13 @@ semver .patch("1.2.3") // 3
 
 > But if you need to extract all the digits, prefer use `Version` object
 
+### Check if version string is valid
+
+```4d
+semver .valid("1.2.3") // True
+semver .minor("not.a.version") // False
+```
+
 ### Compare version
 
 #### comparator
@@ -54,6 +61,7 @@ semver .patch("1.2.3") // 3
 ```4d
 semver .compare(semver .v0;semver .v1)
 ```
+
 - return 0 if equals
 - return 1 if first argument is greater
 - return -1 if first argument is lower
@@ -61,36 +69,40 @@ semver .compare(semver .v0;semver .v1)
 #### equality
 
 ```4d
-semver .eq(semver .v1;"1.0.0')
+semver .eq(semver .v1;"1.0.0")
 ```
 
 #### greater
 
 ```4d
-semver .gt(semver .v1;"0.9.0')
+semver .gt(semver .v1;"0.9.0")
+semver .gt("0.9.2";"0.9.0")
+semver .gt("1.0.0";"0.9.0")
 ```
 
 #### greater or equals than
+
 ```4d
-semver .gte(semver .v1;"0.9.0')
+semver .gte("1.5.6";"0.9.0")
 ```
 
 #### lower than
 
 ```4d
-semver .lt(semver .v1;"0.9.0')
+semver .lt("0.5.6";"0.9.0")
 ```
 
 #### lower or equals than
 
 ```4d
-semver .lte(semver .v1;"0.9.0')
+semver .lte("0.5.6";"0.9.0")
 ```
 
 ## TODO
 
+- [x] increment functions
+- [x] is valid function
 - [x] compare two versions
-- [ ] compare version with special syntax like >=2.5.0 || 5.0.0 - 7.2.3) 
+- [ ] compare version with special syntax like >=2.5.0 || 5.0.0 - 7.2.3)
 - [ ] clean version string (coerce, remove v prefix, beta suffix)
-- [ ] increment functions
-- [ ] is valid function
+- [ ] support suffix(-xxx : prerelease, beta etc...)

@@ -4,6 +4,7 @@ exported:=New object:C1471(\
 "major";Formula:C1597(cs:C1710.Version.new($1).major);\
 "minor";Formula:C1597(cs:C1710.Version.new($1).minor);\
 "patch";Formula:C1597(cs:C1710.Version.new($1).patch);\
+"valid";Formula:C1597(cs:C1710.Version.new($1).valid);\
 "v0";cs:C1710.Version.new(0;0;0);\
 "v1";cs:C1710.Version.new(1;0;0);\
 "compare";Formula:C1597(cs:C1710.Version.new($1).compareTo($2));\

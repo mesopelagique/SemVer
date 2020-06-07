@@ -12,7 +12,7 @@ Class constructor
 		: (Undefined:C82($3))
 			$counts:=2
 	End case 
-	
+	This:C1470.valid:=True:C214
 	Case of 
 		: ($counts=1)
 			
@@ -141,7 +141,7 @@ Function eq
 Function neq
 	C_VARIANT:C1683($1)
 	C_BOOLEAN:C305($0)
-	$0:=Not:C34(This:C1470.eq($1))
+	$0:=Not:C34(This:C1470.eq($1))  // PERF: implement it instead of using Not
 	
 Function equalTo
 	C_VARIANT:C1683($1)
@@ -162,3 +162,20 @@ Function equalTo
 			End if 
 		End if 
 	End if 
+	
+Function inc
+	C_TEXT:C284($1)
+	This:C1470.increment($1)
+	
+Function increment
+	C_TEXT:C284($1)
+	Case of 
+		: ($1="major")
+			This:C1470.major:=This:C1470.major+1
+		: ($1="minor")
+			This:C1470.minor:=This:C1470.minor+1
+		: ($1="patch")
+			This:C1470.patch:=This:C1470.patch+1
+		Else 
+			ALERT:C41(False:C215;"Incorrect type of level "+String:C10($1))
+	End case 
