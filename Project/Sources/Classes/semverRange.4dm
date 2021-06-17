@@ -20,10 +20,28 @@ Class constructor($variant : Variant)
 			
 		: (Value type:C1509($variant)=Is text:K8:3)
 			
+			ASSERT:C1129(Length:C16($variant)>0; "range could not be empty text")
 			
+			Case of 
+				: ($variant[[1]]="^")  // up to major
+					
+					This:C1470.min:=cs:C1710.Version.new(Substring:C12($variant; 2))
+					This:C1470.max:=This:C1470.min.maxMajor()
+					
+				: ($variant[[1]]="~")  // up to minor
+					
+					This:C1470.min:=cs:C1710.Version.new(Substring:C12($variant; 2))
+					This:C1470.max:=This:C1470.min.maxMinor()
+					
+				Else   // simple one, ie. exact version
+					This:C1470.min:=cs:C1710.Version.new($variant)
+					This:C1470.max:=This:C1470.min
+			End case 
 			
 		Else 
+			
 			ASSERT:C1129(False:C215; "Unknown input for range version")
+			
 	End case 
 	
 	

@@ -161,3 +161,10 @@ Function increment($part : Text)
 		Else 
 			ASSERT:C1129(False:C215; "Incorrect type of level "+String:C10($part))
 	End case 
+	
+Function maxMinor()->$version : Object
+	$version:=cs:C1710.Version.new(This:C1470.major; This:C1470.minor; MAXLONG:K35:2)
+	
+Function maxMajor()->$version : Object
+	$version:=cs:C1710.Version.new(This:C1470.major; MAXLONG:K35:2; MAXLONG:K35:2)
+	
