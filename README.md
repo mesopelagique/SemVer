@@ -51,7 +51,7 @@ semver.patch("1.2.3") // 3
 
 ```4d
 semver.valid("1.2.3") // True
-semver.minor("not.a.version") // False
+semver.valid("not.a.version") // False
 ```
 
 ### Compare version
@@ -59,7 +59,7 @@ semver.minor("not.a.version") // False
 #### comparator
 
 ```4d
-semver.compare(semver .v0;semver .v1)
+semver.compare(semver.v0; semver.v1)
 ```
 
 - return 0 if equals
@@ -69,33 +69,33 @@ semver.compare(semver .v0;semver .v1)
 #### equality
 
 ```4d
-semver.eq(semver .v1;"1.0.0")
+semver.eq(semver.v1;"1.0.0")
 ```
 
 #### greater
 
 ```4d
-semver.gt(semver .v1;"0.9.0")
-semver.gt("0.9.2";"0.9.0")
-semver.gt("1.0.0";"0.9.0")
+semver.gt(semver.v1; "0.9.0")
+semver.gt("0.9.2"; "0.9.0")
+semver.gt("1.0.0"; "0.9.0")
 ```
 
 #### greater or equals than
 
 ```4d
-semver.gte("1.5.6";"0.9.0")
+semver.gte("1.5.6"; "0.9.0")
 ```
 
 #### lower than
 
 ```4d
-semver.lt("0.5.6";"0.9.0")
+semver.lt("0.5.6"; "0.9.0")
 ```
 
 #### lower or equals than
 
 ```4d
-semver.lte("0.5.6";"0.9.0")
+semver.lte("0.5.6"; "0.9.0")
 ```
 
 ### Range object
@@ -114,8 +114,8 @@ $range:=semver.range(New object("min"; "1.0.1"; "max"; "1.2.1"))
 ##### from exact version
 
 ```4d
-$version:=semver .range("1.2.3")
-$version:=semver .range(semver.version("1.2.3"))
+$version:=semver.range("1.2.3")
+$version:=semver.range(semver.version("1.2.3"))
 ```
 
 > `min` and `max` will be equals
