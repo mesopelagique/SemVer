@@ -1,8 +1,8 @@
 
 
 Class constructor
-	C_VARIANT:C1683($1;$2;$3)
-	C_LONGINT:C283($counts)
+	C_VARIANT:C1683($1; $2; $3)
+	var $counts : Integer
 	$counts:=Count parameters:C259
 	Case of   // fix count parameters from formula
 		: (Undefined:C82($1))
@@ -19,7 +19,7 @@ Class constructor
 			Case of 
 				: (Value type:C1509($1)=Is text:K8:3)
 					C_COLLECTION:C1488($col)
-					$col:=Split string:C1554($1;".")
+					$col:=Split string:C1554($1; ".")
 					Case of 
 						: ($col.length>2)
 							This:C1470.major:=Num:C11($col[0])
@@ -84,98 +84,80 @@ Class constructor
 			This:C1470.valid:=False:C215
 	End case 
 	
-Function compareTo
-	C_VARIANT:C1683($1)
-	C_LONGINT:C283($0)
-	C_OBJECT:C1216($that)
-	$that:=cs:C1710.Version.new($1)
+Function compareTo($version : Variant)->$result : Integer
+	var $that : Object
+	$that:=cs:C1710.Version.new($version)
 	
 	Case of 
 		: (This:C1470.major>$that.major)
-			$0:=1
+			$result:=1
 		: (This:C1470.major<$that.major)
-			$0:=-1
+			$result:=-1
 		Else   // major equal
 			Case of 
 				: (This:C1470.minor>$that.minor)
-					$0:=1
+					$result:=1
 				: (This:C1470.minor<$that.minor)
-					$0:=-1
+					$result:=-1
 				Else   // minor equal
 					Case of 
 						: (This:C1470.patch>$that.patch)
-							$0:=1
+							$result:=1
 						: (This:C1470.patch<$that.patch)
-							$0:=-1
+							$result:=-1
 						Else   // patch equal
-							$0:=0
+							$result:=0
 					End case 
 			End case 
 	End case 
 	
-Function gt
-	C_VARIANT:C1683($1)
-	C_BOOLEAN:C305($0)
-	$0:=This:C1470.compareTo($1)>0
+Function gt($version : Variant)->$result : Boolean
+	$result:=This:C1470.compareTo($version)>0
 	
-Function gte
-	C_VARIANT:C1683($1)
-	C_BOOLEAN:C305($0)
-	$0:=This:C1470.compareTo($1)>=0
+Function gte($version : Variant)->$result : Boolean
+	$result:=This:C1470.compareTo($version)>=0
 	
-Function lt
-	C_VARIANT:C1683($1)
-	C_BOOLEAN:C305($0)
-	$0:=This:C1470.compareTo($1)<0
+Function lt($version : Variant)->$result : Boolean
+	$result:=This:C1470.compareTo($version)<0
 	
-Function lte
-	C_VARIANT:C1683($1)
-	C_BOOLEAN:C305($0)
-	$0:=This:C1470.compareTo($1)<=0
+Function lte($version : Variant)->$result : Boolean
+	$result:=This:C1470.compareTo($version)<=0
 	
-Function eq
-	C_VARIANT:C1683($1)
-	C_BOOLEAN:C305($0)
-	$0:=This:C1470.equalTo($1)
+Function eq($version : Variant)->$result : Boolean
+	$result:=This:C1470.equalTo($version)
 	
-Function neq
-	C_VARIANT:C1683($1)
-	C_BOOLEAN:C305($0)
-	$0:=Not:C34(This:C1470.eq($1))  // PERF: implement it instead of using Not
+Function neq($version : Variant)->$result : Boolean
+	$result:=Not:C34(This:C1470.eq($version))  // PERF: implement it instead of using Not
 	
-Function equalTo
-	C_VARIANT:C1683($1)
-	C_BOOLEAN:C305($0)
-	C_OBJECT:C1216($that)
-	$that:=cs:C1710.Version.new($1)
+Function equalTo($version : Variant)->$result : Boolean
+	var $that : Object
+	$that:=cs:C1710.Version.new($version)
 	
 	If (This:C1470.major#$that.major)
-		$0:=False:C215
+		$result:=False:C215
 	Else   // major equal
 		If (This:C1470.minor#$that.minor)
-			$0:=False:C215
+			$result:=False:C215
 		Else   // minor equal
 			If (This:C1470.patch#$that.patch)
-				$0:=False:C215
+				$result:=False:C215
 			Else   // patch equal
-				$0:=True:C214
+				$result:=True:C214
 			End if 
 		End if 
 	End if 
 	
-Function inc
-	C_TEXT:C284($1)
-	This:C1470.increment($1)
+Function inc($part : Text)
+	This:C1470.increment($part)
 	
-Function increment
-	C_TEXT:C284($1)
+Function increment($part : Text)
 	Case of 
-		: ($1="major")
+		: ($part="major")
 			This:C1470.major:=This:C1470.major+1
-		: ($1="minor")
+		: ($part="minor")
 			This:C1470.minor:=This:C1470.minor+1
-		: ($1="patch")
+		: ($part="patch")
 			This:C1470.patch:=This:C1470.patch+1
 		Else 
-			ALERT:C41(False:C215;"Incorrect type of level "+String:C10($1))
+			ASSERT:C1129(False:C215; "Incorrect type of level "+String:C10($part))
 	End case 
