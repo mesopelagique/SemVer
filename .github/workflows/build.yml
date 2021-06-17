@@ -2,7 +2,17 @@ name: build
 
 on:
   push:
+    branches:
+      - main
+    paths: 
+      - 'Project/**'
+      - '.github/workflows/build.yml'
   pull_request:
+    branches:
+      - main
+    paths: 
+      - 'Project/**'
+      - '.github/workflows/build.yml'
   workflow_dispatch:
 
 jobs:
