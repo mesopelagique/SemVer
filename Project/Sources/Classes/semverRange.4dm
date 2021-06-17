@@ -77,7 +77,6 @@ Class constructor($variant : Variant)
 			
 	End case 
 	
-	
 Function satisfiedBy($version : Variant)->$result : Boolean
 	$result:=This:C1470.min.lte($version)
 	If ($result)
