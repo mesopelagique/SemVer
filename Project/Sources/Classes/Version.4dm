@@ -162,6 +162,31 @@ Function increment($part : Text)
 			ASSERT:C1129(False:C215; "Incorrect type of level "+String:C10($part))
 	End case 
 	
+Function decrement($part : Text)
+	Case of 
+		: ($part="major")
+			ASSERT:C1129(This:C1470.major>0; "Cannot decrement a 0 major version")
+			This:C1470.major:=This:C1470.major-1
+			
+		: ($part="minor")
+			If (This:C1470.minor=0)
+				This:C1470.minor:=MAXLONG:K35:2
+				This:C1470.decrement("major")
+			Else 
+				This:C1470.minor:=This:C1470.minor-1
+			End if 
+			
+		: ($part="patch")
+			If (This:C1470.patch=0)
+				This:C1470.patch:=MAXLONG:K35:2
+				This:C1470.decrement("minor")
+			Else 
+				This:C1470.patch:=This:C1470.patch-1
+			End if 
+		Else 
+			ASSERT:C1129(False:C215; "Incorrect type of level "+String:C10($part))
+	End case 
+	
 Function maxMinor()->$version : Object
 	$version:=cs:C1710.Version.new(This:C1470.major; This:C1470.minor; MAXLONG:K35:2)
 	

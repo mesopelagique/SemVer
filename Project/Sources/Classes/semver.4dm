@@ -2,6 +2,7 @@
 Class constructor
 	This:C1470.v0:=cs:C1710.Version.new(0; 0; 0)
 	This:C1470.v1:=cs:C1710.Version.new(1; 0; 0)
+	This:C1470.vMax:=cs:C1710.Version.new(MAXLONG:K35:2; MAXLONG:K35:2; MAXLONG:K35:2)
 	
 Function version()->$version : Object
 	C_VARIANT:C1683(${1})

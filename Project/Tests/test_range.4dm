@@ -163,4 +163,23 @@ While (_.describe("Parse some range string "))
 		_.expect(semver.range("~1").min).to(_.beEqualTo(semver.v1))
 	End while 
 	
+	While (_.it("0.0 - 1 must have lower bound equal to v0 and upper to v1"))
+		_.expect(semver.range("0.0 - 1").min).to(_.beEqualTo(semver.v0))
+		_.expect(semver.range("0.0 - 1").max).to(_.beEqualTo(semver.v1))
+		_.expect(semver.range("0.0 - 1").satisfiedBy(semver.version("0.5"))).to(_.beTrue())
+		_.expect(semver.range("0.0 - 1").satisfiedBy(semver.version("1.5"))).to(_.beFalse())
+	End while 
+	
+	While (_.it(">1 must have lower bound equal to 1.0.1"))
+		_.expect(semver.range(">1").min).to(_.beEqualTo(semver.version("1.0.1")))
+		_.expect(semver.range(">1").satisfiedBy(semver.version("0.5"))).to(_.beFalse())
+		_.expect(semver.range(">1").satisfiedBy(semver.version("1.5"))).to(_.beTrue())
+	End while 
+	
+	While (_.it("<1 must have lower bound equal to v0"))
+		_.expect(semver.range("<1").min).to(_.beEqualTo(semver.v0))
+		_.expect(semver.range("<1").satisfiedBy(semver.version("0.5"))).to(_.beTrue())
+		_.expect(semver.range("<1").satisfiedBy(semver.version("1.5"))).to(_.beFalse())
+	End while 
+	
 End while 

@@ -22,6 +22,7 @@ Class constructor($variant : Variant)
 			
 			ASSERT:C1129(Length:C16($variant)>0; "range could not be empty text")
 			
+			//%W-533.1
 			Case of 
 				: ($variant[[1]]="^")  // up to major
 					
@@ -33,10 +34,42 @@ Class constructor($variant : Variant)
 					This:C1470.min:=cs:C1710.Version.new(Substring:C12($variant; 2))
 					This:C1470.max:=This:C1470.min.maxMinor()
 					
+				: ($variant[[1]]=">")  // up to minor
+					
+					If ($variant[[2]]="=")  // up to minor
+						This:C1470.min:=cs:C1710.Version.new(Substring:C12($variant; 3))
+					Else 
+						This:C1470.min:=cs:C1710.Version.new(Substring:C12($variant; 2))
+						This:C1470.min.increment("patch")
+					End if 
+					This:C1470.max:=semver.vMax
+					
+				: ($variant[[1]]="<")  // up to minor
+					
+					If ($variant[[2]]="=")
+						This:C1470.max:=cs:C1710.Version.new(Substring:C12($variant; 3))
+					Else 
+						This:C1470.max:=cs:C1710.Version.new(Substring:C12($variant; 2))
+						This:C1470.max.decrement("patch")
+					End if 
+					This:C1470.min:=semver.v0
+					
+				: ($variant[[1]]="=")  // equal to
+					
+					This:C1470.min:=cs:C1710.Version.new(Substring:C12($variant; 2))
+					This:C1470.max:=This:C1470.min
+					
+				: (Position:C15(" - "; $variant)>0)
+					var $versions : Collection
+					$versions:=Split string:C1554($variant; " - ")
+					This:C1470.min:=cs:C1710.Version.new($versions[0])
+					This:C1470.max:=cs:C1710.Version.new($versions[1])
+					
 				Else   // simple one, ie. exact version
 					This:C1470.min:=cs:C1710.Version.new($variant)
 					This:C1470.max:=This:C1470.min
 			End case 
+			//%W+533.1
 			
 		Else 
 			
