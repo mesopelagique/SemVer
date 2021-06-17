@@ -148,8 +148,7 @@ examples:
 
 * `^2.2.1`
 * `^0.1.0`
-* `^0.0.3`
-* 
+
 #### Check if version satisfy a range
 
 ```4d
