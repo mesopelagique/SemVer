@@ -1,5 +1,7 @@
 # SemVer
 
+[![Build](https://github.com/mesopelagique/SemVer/actions/workflows/build.yml/badge.svg)](https://github.com/mesopelagique/SemVer/actions/workflows/build.yml)
+
 [SemVer](https://semver.org/) for 4D
 
 ## Usage
@@ -75,13 +77,13 @@ $semver.compare(semver.v0; $semver.v1)
 #### equality
 
 ```4d
-semver.eq(semver.v1;"1.0.0")
+semver.eq($semver.v1;"1.0.0")
 ```
 
 #### greater
 
 ```4d
-$semver.gt(semver.v1; "0.9.0")
+$semver.gt($semver.v1; "0.9.0")
 $semver.gt("0.9.2"; "0.9.0")
 $semver.gt("1.0.0"; "0.9.0")
 ```
