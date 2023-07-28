@@ -65,7 +65,7 @@ $semver.valid("not.a.version") // False
 #### comparator
 
 ```4d
-$semver.compare(semver.v0; semver.v1)
+$semver.compare(semver.v0; $semver.v1)
 ```
 
 - return 0 if equals
