@@ -1,0 +1,454 @@
+{
+	"_method_": {},
+	"cs.SemVer": {
+		"Range": {
+			"new()": {
+				"Syntax": "**.new**( *variant* : Variant )",
+				"Params": [
+					[
+						"variant",
+						"Variant",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		},
+		"Version": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"Instance": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		}
+	},
+	"Range": {
+		"satisfiedBy()": {
+			"Syntax": "**.satisfiedBy**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"Version": {
+		"gt()": {
+			"Syntax": "**.gt**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"decrement()": {
+			"Syntax": "**.decrement**( *part* : Text )",
+			"Params": [
+				[
+					"part",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"lt()": {
+			"Syntax": "**.lt**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"gte()": {
+			"Syntax": "**.gte**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"increment()": {
+			"Syntax": "**.increment**( *part* : Text )",
+			"Params": [
+				[
+					"part",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"neq()": {
+			"Syntax": "**.neq**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"maxMajor()": {
+			"Syntax": "**.maxMajor**()->version : Object",
+			"Params": [
+				[
+					"version",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"maxMinor()": {
+			"Syntax": "**.maxMinor**()->version : Object",
+			"Params": [
+				[
+					"version",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"inc()": {
+			"Syntax": "**.inc**( *part* : Text )",
+			"Params": [
+				[
+					"part",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"equalTo()": {
+			"Syntax": "**.equalTo**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lte()": {
+			"Syntax": "**.lte**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"eq()": {
+			"Syntax": "**.eq**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"compareTo()": {
+			"Syntax": "**.compareTo**( *version* : Variant )->result : Integer",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"Instance": {
+		"range()": {
+			"Syntax": "**.range**( *rangeInfo* : Variant )->range : Object",
+			"Params": [
+				[
+					"rangeInfo",
+					"Variant",
+					"->"
+				],
+				[
+					"range",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lte()": {
+			"Syntax": "**.lte**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"gte()": {
+			"Syntax": "**.gte**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lt()": {
+			"Syntax": "**.lt**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"patch()": {
+			"Syntax": "**.patch**( *v1* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"valid()": {
+			"Syntax": "**.valid**( *v1* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"compare()": {
+			"Syntax": "**.compare**( *v1* : Variant; *v2* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"minor()": {
+			"Syntax": "**.minor**( *v1* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"major()": {
+			"Syntax": "**.major**( *v1* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"eq()": {
+			"Syntax": "**.eq**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"gt()": {
+			"Syntax": "**.gt**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"version()": {
+			"Syntax": "**.version**()->version : Object",
+			"Params": [
+				[
+					"version",
+					"Object",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	}
+}

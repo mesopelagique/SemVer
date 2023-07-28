@@ -1,0 +1,1 @@
+singetonize(cs:C1710.Instance.new())

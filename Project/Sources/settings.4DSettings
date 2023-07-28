@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="2">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="4">
 	<com.4d>
 		<web>
 			<standalone_server>
@@ -11,7 +11,8 @@
 			</network>
 		</server>
 		<compiler>
-			<options compilation_path="3"/>
+			<options compilation_path="3" symbol_file="true" syntax_file="true" target="all"/>
 		</compiler>
+		<general component_classStore_name="SemVer"/>
 	</com.4d>
 </preferences>

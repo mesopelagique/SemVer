@@ -1,3 +1,6 @@
 userPreferences.*
 Project/DerivedData
-Data
+Data/*
+Logs/*
+data.*
+*.dylib

@@ -42,7 +42,7 @@ Class constructor($variant : Variant)
 						This:C1470.min:=cs:C1710.Version.new(Substring:C12($variant; 2))
 						This:C1470.min.increment("patch")
 					End if 
-					This:C1470.max:=semver.vMax
+					This:C1470.max:=cs:C1710.Instance.new().vMax  // CONST
 					
 				: ($variant[[1]]="<")  // up to minor
 					
@@ -52,7 +52,7 @@ Class constructor($variant : Variant)
 						This:C1470.max:=cs:C1710.Version.new(Substring:C12($variant; 2))
 						This:C1470.max.decrement("patch")
 					End if 
-					This:C1470.min:=semver.v0
+					This:C1470.min:=cs:C1710.Instance.new().v0  // CONST 
 					
 				: ($variant[[1]]="=")  // equal to
 					
