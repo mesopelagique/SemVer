@@ -1,24 +1,19 @@
-name: build
-
+name: Build
 on:
   push:
-    branches:
-      - main
-    paths: 
-      - 'Project/**'
-      - '.github/workflows/build.yml'
+    paths:
+      - '**.4dm'
   pull_request:
-    branches:
-      - main
-    paths: 
-      - 'Project/**'
-      - '.github/workflows/build.yml'
+    paths:
+      - '**.4dm'
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: "Build"
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Build Action
-        uses: mesopelagique/build-action@v1
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Build
+      uses: 4d/build4d-action@main
