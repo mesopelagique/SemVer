@@ -47,6 +47,9 @@ Function lte($v1 : Variant; $v2 : Variant)->$result : Boolean
 Function eq($v1 : Variant; $v2 : Variant)->$result : Boolean
 	$result:=cs:C1710.Version.new($v1).eq($v2)
 	
-Function range($rangeInfo : Variant)->$range : Object
+Function neq($v1 : Variant; $v2 : Variant)->$result : Boolean
+	$result:=cs:C1710.Version.new($v1).neq($v2)
+	
+Function range($rangeInfo : Variant)->$range : cs:C1710.Range
 	$range:=cs:C1710.Range.new($rangeInfo)
 	

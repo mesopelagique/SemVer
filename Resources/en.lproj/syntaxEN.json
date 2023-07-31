@@ -234,7 +234,7 @@
 	},
 	"Instance": {
 		"range()": {
-			"Syntax": "**.range**( *rangeInfo* : Variant )->range : Object",
+			"Syntax": "**.range**( *rangeInfo* : Variant )->range : cs.SemVer.Range",
 			"Params": [
 				[
 					"rangeInfo",
@@ -243,7 +243,28 @@
 				],
 				[
 					"range",
-					"Object",
+					"cs.SemVer.Range",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"neq()": {
+			"Syntax": "**.neq**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
 					"<-"
 				]
 			],
