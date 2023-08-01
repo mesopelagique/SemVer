@@ -455,6 +455,54 @@
 		}
 	},
 	"Range": {
+		"firstSatisfying()": {
+			"Syntax": "**.firstSatisfying**( *versions* : Collection ) : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lastSatisfying()": {
+			"Syntax": "**.lastSatisfying**( *versions* : Collection ) : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"maxSatisfying()": {
+			"Syntax": "**.maxSatisfying**( *versions* : Collection )->result : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"result",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"parseRange()": {
 			"Syntax": "**.parseRange**( *text* : Text )->range : cs.SemVer.Range",
 			"Params": [
@@ -482,6 +530,22 @@
 				[
 					"result",
 					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"minSatisfying()": {
+			"Syntax": "**.minSatisfying**( *versions* : Collection )->result : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"result",
+					"cs.SemVer.Version",
 					"<-"
 				]
 			],

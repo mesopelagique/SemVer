@@ -46,6 +46,45 @@ Class constructor($variant : Variant)
 			
 	End case 
 	
+Function firstSatisfying($versions : Collection) : cs:C1710.Version
+	var $version : Variant
+	For each ($version; $versions)
+		If (This:C1470.satisfiedBy($version))
+			If ((Value type:C1509($version)=Is object:K8:27) && OB Instance of:C1731($version; cs:C1710.Version))
+				return $version
+			End if 
+			return cs:C1710.Version.new($version)
+		End if 
+	End for each 
+	return Null:C1517
+	
+Function lastSatisfying($versions : Collection) : cs:C1710.Version
+	return This:C1470.firstSatisfying($versions.reverse())
+	
+Function maxSatisfying($versions : Collection)->$result : cs:C1710.Version
+	var $version : Variant
+	For each ($version; $versions)
+		If ((($result=Null:C1517) || ($result.lt($version)) && (This:C1470.satisfiedBy($version))))
+			If ((Value type:C1509($version)=Is object:K8:27) && OB Instance of:C1731($version; cs:C1710.Version))
+				$result:=$version
+			Else 
+				$result:=cs:C1710.Version.new($version)
+			End if 
+		End if 
+	End for each 
+	
+Function minSatisfying($versions : Collection)->$result : cs:C1710.Version
+	var $version : Variant
+	For each ($version; $versions)
+		If ((($result=Null:C1517) || ($result.gt($version)) && (This:C1470.satisfiedBy($version))))
+			If ((Value type:C1509($version)=Is object:K8:27) && OB Instance of:C1731($version; cs:C1710.Version))
+				$result:=$version
+			Else 
+				$result:=cs:C1710.Version.new($version)
+			End if 
+		End if 
+	End for each 
+	
 Function satisfiedBy($version : Variant)->$result : Boolean
 	If (This:C1470.set#Null:C1517)
 		var $comp : cs:C1710.Range
