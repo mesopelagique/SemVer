@@ -72,6 +72,11 @@ Function parseRange($text : Text)->$range : cs:C1710.Range
 	$range:=cs:C1710.Range.new()
 	//%W-533.1
 	Case of 
+		: (($text[[1]]="*") && (Length:C16($text)=1))  // all
+			
+			$range.min:=cs:C1710.Instance.new().v0  // CONST 
+			$range.max:=cs:C1710.Instance.new().vMax  // CONST
+			
 		: ($text[[1]]="^")  // up to major
 			
 			$range.min:=cs:C1710.Version.new(Substring:C12($text; 2))
@@ -107,7 +112,7 @@ Function parseRange($text : Text)->$range : cs:C1710.Range
 			$range.min:=cs:C1710.Version.new(Substring:C12($text; 2))
 			$range.max:=$range.min
 			
-		: (Position:C15(" - "; $text)>0)
+		: (Position:C15(" - "; $text)>0)  //CLEAN:  maybe "-"
 			var $versions : Collection
 			$versions:=Split string:C1554($text; " - ")
 			$range.min:=cs:C1710.Version.new($versions[0])
