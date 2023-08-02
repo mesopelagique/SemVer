@@ -34,6 +34,12 @@ Class constructor($variant : Variant)
 			// XXX maybe remote all invalid one before (or useless like <0.0.0)
 			ASSERT:C1129(This:C1470.set.length>0; "range could not be empty text")
 			
+			If (This:C1470.set.length=1)  // re-address as unique range, no more composite
+				This:C1470.min:=This:C1470.set[0].min
+				This:C1470.max:=This:C1470.set[0].max
+				This:C1470.set:=Null:C1517
+			End if 
+			
 			// OPTI: if one of the set is * (ie. any) then just take it, remove all other
 			
 		: ($variant=Null:C1517)
@@ -162,6 +168,61 @@ Function parseRange($text : Text)->$range : cs:C1710.Range
 			$range.max:=$range.min
 	End case 
 	//%W+533.1
+	
+	// True if max = min
+Function isOne() : Boolean
+	If ((This:C1470.min#Null:C1517) && (This:C1470.min.eq(This:C1470.max)))
+		return True:C214
+	End if 
+	If ((This:C1470.set=Null:C1517) || (This:C1470.set.length#1))
+		return False:C215  // CLEAN: could have concrete in this case if all sub are equals; but...
+	End if 
+	return This:C1470.set[0].isOne()
+	
+	// True if not v0
+Function isValid() : Boolean
+	If (This:C1470.min#Null:C1517)
+		If (This:C1470.min.eq(cs:C1710.Instance.new().v0) && This:C1470.min.eq(This:C1470.max))
+			return False:C215
+		End if 
+		return True:C214
+	End if 
+	
+	If ((This:C1470.set=Null:C1517) || (This:C1470.set.length=0))
+		return False:C215
+	End if 
+	var $sub : cs:C1710.Range
+	For each ($sub; This:C1470.set)
+		If ($sub.isValid())
+			return True:C214
+		End if 
+	End for each 
+	
+	return False:C215
+	
+	// True if match any version (like *)
+Function isAny() : Boolean
+	If ((This:C1470.min#Null:C1517) && (This:C1470.max#Null:C1517))
+		If (This:C1470.min.eq(cs:C1710.Instance.new().v0) && This:C1470.max.eq(cs:C1710.Instance.new().vMax))
+			return True:C214
+		End if 
+		return False:C215
+	End if 
+	
+	If ((This:C1470.set=Null:C1517) || (This:C1470.set.length=0))
+		return False:C215  // invalid?
+	End if 
+	
+	var $sub : cs:C1710.Range
+	For each ($sub; This:C1470.set)
+		If ($sub.isAny())
+			return True:C214
+		End if 
+	End for each 
+	
+Function union($added : cs:C1710.Range)->$newRange : cs:C1710.Range
+	$newRange:=cs:C1710.Range.new()
+	$newRange.set:=New collection:C1472(This:C1470; $added)
 	
 	// MARK:- string utils
 	

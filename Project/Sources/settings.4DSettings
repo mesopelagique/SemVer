@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="4">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="5">
 	<com.4d>
 		<web>
 			<standalone_server>
@@ -14,5 +14,8 @@
 			<options compilation_path="3" symbol_file="true" syntax_file="true" target="all"/>
 		</compiler>
 		<general component_classStore_name="SemVer"/>
+		<database>
+			<misc mac_use_lf="true" no_bom="true" prefer_null_than_blank_values="false" use_ast_interpreter="false"/>
+		</database>
 	</com.4d>
 </preferences>

@@ -1,4 +1,8 @@
 
+property v0 : cs:C1710.Version
+property v1 : cs:C1710.Version
+property vMax : cs:C1710.Version
+
 Class constructor
 	This:C1470.v0:=cs:C1710.Version.new(0; 0; 0)
 	This:C1470.v1:=cs:C1710.Version.new(1; 0; 0)

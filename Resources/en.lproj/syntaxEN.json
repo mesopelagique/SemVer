@@ -1,20 +1,6 @@
 {
 	"_method_": {},
 	"cs.SemVer": {
-		"Instance": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
-		"Version": {
-			"new()": {
-				"Syntax": "**.new**()",
-				"Params": [],
-				"Summary": ""
-			}
-		},
 		"Range": {
 			"new()": {
 				"Syntax": "**.new**( *variant* : Variant )",
@@ -27,30 +13,98 @@
 				],
 				"Summary": ""
 			}
+		},
+		"Version": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"Instance": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
 		}
 	},
-	"Instance": {
-		"patch()": {
-			"Syntax": "**.patch**( *v1* : Variant )->result : Integer",
+	"Range": {
+		"isAny()": {
+			"Syntax": "**.isAny**() : Boolean",
 			"Params": [
 				[
-					"v1",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Integer",
+					"",
+					"Boolean",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"valid()": {
-			"Syntax": "**.valid**( *v1* : Variant )->result : Boolean",
+		"union()": {
+			"Syntax": "**.union**( *added* : cs.SemVer.Range )->newRange : cs.SemVer.Range",
 			"Params": [
 				[
-					"v1",
+					"added",
+					"cs.SemVer.Range",
+					"->"
+				],
+				[
+					"newRange",
+					"cs.SemVer.Range",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lastSatisfying()": {
+			"Syntax": "**.lastSatisfying**( *versions* : Collection ) : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"maxSatisfying()": {
+			"Syntax": "**.maxSatisfying**( *versions* : Collection )->result : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"result",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isValid()": {
+			"Syntax": "**.isValid**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"satisfiedBy()": {
+			"Syntax": "**.satisfiedBy**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
 					"Variant",
 					"->"
 				],
@@ -62,101 +116,107 @@
 			],
 			"Summary": ""
 		},
-		"version()": {
-			"Syntax": "**.version**()->version : Object",
+		"parseRange()": {
+			"Syntax": "**.parseRange**( *text* : Text )->range : cs.SemVer.Range",
+			"Params": [
+				[
+					"text",
+					"Text",
+					"->"
+				],
+				[
+					"range",
+					"cs.SemVer.Range",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"minSatisfying()": {
+			"Syntax": "**.minSatisfying**( *versions* : Collection )->result : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"result",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"isOne()": {
+			"Syntax": "**.isOne**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"firstSatisfying()": {
+			"Syntax": "**.firstSatisfying**( *versions* : Collection ) : cs.SemVer.Version",
+			"Params": [
+				[
+					"versions",
+					"Collection",
+					"->"
+				],
+				[
+					"",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set": {
+			"Syntax": "set : Collection"
+		}
+	},
+	"Version": {
+		"gt()": {
+			"Syntax": "**.gt**( *version* : Variant )->result : Boolean",
 			"Params": [
 				[
 					"version",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"compare()": {
-			"Syntax": "**.compare**( *v1* : Variant; *v2* : Variant )->result : Integer",
-			"Params": [
-				[
-					"v1",
-					"Variant",
-					"->"
-				],
-				[
-					"v2",
 					"Variant",
 					"->"
 				],
 				[
 					"result",
-					"Integer",
+					"Boolean",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
-		"major()": {
-			"Syntax": "**.major**( *v1* : Variant )->result : Integer",
+		"decrement()": {
+			"Syntax": "**.decrement**( *part* : Text ) : cs.SemVer.Version",
 			"Params": [
 				[
-					"v1",
-					"Variant",
+					"part",
+					"Text",
 					"->"
 				],
 				[
-					"result",
-					"Integer",
+					"",
+					"cs.SemVer.Version",
 					"<-"
 				]
 			],
 			"Summary": ""
 		},
 		"lt()": {
-			"Syntax": "**.lt**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Syntax": "**.lt**( *version* : Variant )->result : Boolean",
 			"Params": [
 				[
-					"v1",
-					"Variant",
-					"->"
-				],
-				[
-					"v2",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"minor()": {
-			"Syntax": "**.minor**( *v1* : Variant )->result : Integer",
-			"Params": [
-				[
-					"v1",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"gt()": {
-			"Syntax": "**.gt**( *v1* : Variant; *v2* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"v1",
-					"Variant",
-					"->"
-				],
-				[
-					"v2",
+					"version",
 					"Variant",
 					"->"
 				],
@@ -169,7 +229,190 @@
 			"Summary": ""
 		},
 		"gte()": {
-			"Syntax": "**.gte**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Syntax": "**.gte**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"increment()": {
+			"Syntax": "**.increment**( *part* : Text ) : cs.SemVer.Version",
+			"Params": [
+				[
+					"part",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"neq()": {
+			"Syntax": "**.neq**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"maxMajor()": {
+			"Syntax": "**.maxMajor**()->version : cs.SemVer.Version",
+			"Params": [
+				[
+					"version",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"maxMinor()": {
+			"Syntax": "**.maxMinor**()->version : cs.SemVer.Version",
+			"Params": [
+				[
+					"version",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"inc()": {
+			"Syntax": "**.inc**( *part* : Text ) : cs.SemVer.Version",
+			"Params": [
+				[
+					"part",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"cs.SemVer.Version",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"equalTo()": {
+			"Syntax": "**.equalTo**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lte()": {
+			"Syntax": "**.lte**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"eq()": {
+			"Syntax": "**.eq**( *version* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"compareTo()": {
+			"Syntax": "**.compareTo**( *version* : Variant )->result : Integer",
+			"Params": [
+				[
+					"version",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"build": {
+			"Syntax": "build : Text"
+		},
+		"patch": {
+			"Syntax": "patch : Integer"
+		},
+		"minor": {
+			"Syntax": "minor : Integer"
+		},
+		"preRelease": {
+			"Syntax": "preRelease : Text"
+		},
+		"major": {
+			"Syntax": "major : Integer"
+		}
+	},
+	"Instance": {
+		"range()": {
+			"Syntax": "**.range**( *rangeInfo* : Variant )->range : cs.SemVer.Range",
+			"Params": [
+				[
+					"rangeInfo",
+					"Variant",
+					"->"
+				],
+				[
+					"range",
+					"cs.SemVer.Range",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"neq()": {
+			"Syntax": "**.neq**( *v1* : Variant; *v2* : Variant )->result : Boolean",
 			"Params": [
 				[
 					"v1",
@@ -210,6 +453,133 @@
 			],
 			"Summary": ""
 		},
+		"gte()": {
+			"Syntax": "**.gte**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"lt()": {
+			"Syntax": "**.lt**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"patch()": {
+			"Syntax": "**.patch**( *v1* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"valid()": {
+			"Syntax": "**.valid**( *v1* : Variant )->result : Boolean",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"compare()": {
+			"Syntax": "**.compare**( *v1* : Variant; *v2* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"v2",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"minor()": {
+			"Syntax": "**.minor**( *v1* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"major()": {
+			"Syntax": "**.major**( *v1* : Variant )->result : Integer",
+			"Params": [
+				[
+					"v1",
+					"Variant",
+					"->"
+				],
+				[
+					"result",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"eq()": {
 			"Syntax": "**.eq**( *v1* : Variant; *v2* : Variant )->result : Boolean",
 			"Params": [
@@ -231,8 +601,8 @@
 			],
 			"Summary": ""
 		},
-		"neq()": {
-			"Syntax": "**.neq**( *v1* : Variant; *v2* : Variant )->result : Boolean",
+		"gt()": {
+			"Syntax": "**.gt**( *v1* : Variant; *v2* : Variant )->result : Boolean",
 			"Params": [
 				[
 					"v1",
@@ -252,187 +622,8 @@
 			],
 			"Summary": ""
 		},
-		"range()": {
-			"Syntax": "**.range**( *rangeInfo* : Variant )->range : cs.SemVer.Range",
-			"Params": [
-				[
-					"rangeInfo",
-					"Variant",
-					"->"
-				],
-				[
-					"range",
-					"cs.SemVer.Range",
-					"<-"
-				]
-			],
-			"Summary": ""
-		}
-	},
-	"Version": {
-		"gte()": {
-			"Syntax": "**.gte**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"compareTo()": {
-			"Syntax": "**.compareTo**( *version* : Variant )->result : Integer",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Integer",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"gt()": {
-			"Syntax": "**.gt**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"equalTo()": {
-			"Syntax": "**.equalTo**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"lt()": {
-			"Syntax": "**.lt**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"eq()": {
-			"Syntax": "**.eq**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"lte()": {
-			"Syntax": "**.lte**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"neq()": {
-			"Syntax": "**.neq**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"inc()": {
-			"Syntax": "**.inc**( *part* : Text )",
-			"Params": [
-				[
-					"part",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"increment()": {
-			"Syntax": "**.increment**( *part* : Text )",
-			"Params": [
-				[
-					"part",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"decrement()": {
-			"Syntax": "**.decrement**( *part* : Text )",
-			"Params": [
-				[
-					"part",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"maxMinor()": {
-			"Syntax": "**.maxMinor**()->version : Object",
+		"version()": {
+			"Syntax": "**.version**()->version : Object",
 			"Params": [
 				[
 					"version",
@@ -442,117 +633,14 @@
 			],
 			"Summary": ""
 		},
-		"maxMajor()": {
-			"Syntax": "**.maxMajor**()->version : Object",
-			"Params": [
-				[
-					"version",
-					"Object",
-					"<-"
-				]
-			],
-			"Summary": ""
-		}
-	},
-	"Range": {
-		"firstSatisfying()": {
-			"Syntax": "**.firstSatisfying**( *versions* : Collection ) : cs.SemVer.Version",
-			"Params": [
-				[
-					"versions",
-					"Collection",
-					"->"
-				],
-				[
-					"",
-					"cs.SemVer.Version",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"vMax": {
+			"Syntax": "vMax : cs.SemVer.Version"
 		},
-		"lastSatisfying()": {
-			"Syntax": "**.lastSatisfying**( *versions* : Collection ) : cs.SemVer.Version",
-			"Params": [
-				[
-					"versions",
-					"Collection",
-					"->"
-				],
-				[
-					"",
-					"cs.SemVer.Version",
-					"<-"
-				]
-			],
-			"Summary": ""
+		"v1": {
+			"Syntax": "v1 : cs.SemVer.Version"
 		},
-		"maxSatisfying()": {
-			"Syntax": "**.maxSatisfying**( *versions* : Collection )->result : cs.SemVer.Version",
-			"Params": [
-				[
-					"versions",
-					"Collection",
-					"->"
-				],
-				[
-					"result",
-					"cs.SemVer.Version",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"parseRange()": {
-			"Syntax": "**.parseRange**( *text* : Text )->range : cs.SemVer.Range",
-			"Params": [
-				[
-					"text",
-					"Text",
-					"->"
-				],
-				[
-					"range",
-					"cs.SemVer.Range",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"satisfiedBy()": {
-			"Syntax": "**.satisfiedBy**( *version* : Variant )->result : Boolean",
-			"Params": [
-				[
-					"version",
-					"Variant",
-					"->"
-				],
-				[
-					"result",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"minSatisfying()": {
-			"Syntax": "**.minSatisfying**( *versions* : Collection )->result : cs.SemVer.Version",
-			"Params": [
-				[
-					"versions",
-					"Collection",
-					"->"
-				],
-				[
-					"result",
-					"cs.SemVer.Version",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"set": {
-			"Syntax": "set : Collection"
+		"v0": {
+			"Syntax": "v0 : cs.SemVer.Version"
 		}
 	}
 }

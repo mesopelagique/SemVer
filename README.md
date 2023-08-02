@@ -171,6 +171,7 @@ $valid:=semver.range("^1.0.0").satisfiedBy("1.5.1")
 - [x] compare two versions
 - [x] check if version satisfy simple range
 - [x] compare version with special syntax like "<=2.5.0 || 5.0.0 - 7.2.3"
+- [x] support suffix(-prerelease and +build)
 - [ ] support wildcards *,x,X
-- [ ] clean version string (coerce, remove v prefix, beta suffix)
-- [ ] support suffix(-xxx : prerelease, beta etc...)
+- [ ] support just two number with space and operators like ">= 1.2 < 3.0.0"
+- [ ] clean version string (coerce)

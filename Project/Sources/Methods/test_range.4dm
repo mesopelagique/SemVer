@@ -47,3 +47,41 @@ ASSERT:C1129(cs:C1710.Version.new("5.3.0").eq($version))
 
 $version:=$semver.range(" >=2.5.0 || 5.0.0 - 7.2.3").minSatisfying(New collection:C1472("5.3"; "1.0.0"; "4.3"; "8.3"))
 ASSERT:C1129(cs:C1710.Version.new("4.3.0").eq($version))
+
+
+var $versionText : Text
+For each ($versionText; New collection:C1472("5.3"; "1.0.0"; "4.3"; "8.3"))
+	ASSERT:C1129($semver.range($versionText).isOne(); "not concrete?"+$versionText)
+End for each 
+
+For each ($versionText; New collection:C1472(">=5.3"; "<=1.0.0"; "^4.3"; "8.3 - 10.5"; "*"))
+	ASSERT:C1129(Not:C34($semver.range($versionText).isOne()); "concrete?"+$versionText)
+End for each 
+
+For each ($versionText; New collection:C1472("5.3"; "1.0.0"; "4.3"; "8.3"))
+	ASSERT:C1129($semver.range($versionText).isValid(); "not valid?"+$versionText)
+End for each 
+
+For each ($versionText; New collection:C1472("5.3-pre"; "1.0.0-pre"; "4-pre"))
+	ASSERT:C1129($semver.range($versionText).isValid(); "not valid?"+$versionText)
+End for each 
+
+For each ($versionText; New collection:C1472(">=5.3"; "<=1.0.0"; "^4.3"; "8.3 - 10.5"; "*"))
+	ASSERT:C1129($semver.range($versionText).isValid(); "not valid?"+$versionText)
+End for each 
+
+For each ($versionText; New collection:C1472("a"; "hello"; "19R2"; "aze.aze.0"; "0"; "v0"))
+	ASSERT:C1129(Not:C34($semver.range($versionText).isValid()); "valid?"+$versionText)
+End for each 
+
+
+For each ($versionText; New collection:C1472("5.3"; "1.0.0"; "4.3"; "8.3"))
+	ASSERT:C1129(Not:C34($semver.range($versionText).isAny()); "any?"+$versionText)
+End for each 
+For each ($versionText; New collection:C1472("a"; "hello"; "19R2"; "aze.aze.0"; "0"))
+	ASSERT:C1129(Not:C34($semver.range($versionText).isAny()); "any?"+$versionText)
+End for each 
+For each ($versionText; New collection:C1472("*"))
+	ASSERT:C1129($semver.range($versionText).isAny(); "not any?"+$versionText)
+End for each 
+ASSERT:C1129($semver.range(New object:C1471("min"; $semver.v0; "max"; $semver.vMax)).isAny(); "not any v0 - vMax?")
